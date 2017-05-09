@@ -148,8 +148,11 @@ definitions:
         type: number
         format: double
         description: Trade price.
-      quantity:
+      volume:
         type: integer
         format: int64
         description: Trade quantity.
+      currency:
+        type: string
+        description: Trade currency.
         
