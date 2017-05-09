@@ -60,14 +60,14 @@ paths:
             title: Isins
             type: object
             properties:
-              total: 
-                type: number
-                format: int32
-                description: Total number of ISINs (that matches the prefix, if used) in the DB. 
               returned: 
                 type: number
                 format: int32
                 description: Number of actually returned ISINs. If limit parameter used
+              total: 
+                type: number
+                format: int32
+                description: Total number of ISINs (that matches the prefix, if used) in the DB
               isins:
                 type: array
                 items:
@@ -117,14 +117,14 @@ paths:
               isin:
                 type: string
                 description: ISIN
-              total: 
-                type: number
-                format: int64
-                description: Total number of trades (within the requested range) in the DB. 
               returned: 
                 type: number
                 format: int32
                 description: Number of actually returned trades. If limit parameter used
+              total: 
+                type: number
+                format: int64
+                description: Total number of trades (within the requested range) in the DB
               trades:
                 type: array
                 items:
@@ -143,16 +143,16 @@ definitions:
       time:
         type: string
         format: date-time
-        description: Trade time.
+        description: Trade time
       price:
         type: number
         format: double
-        description: Trade price.
+        description: Trade price
       volume:
         type: integer
         format: int64
-        description: Trade quantity.
+        description: Trade quantity
       currency:
         type: string
-        description: Trade currency.
+        description: Trade currency
         
