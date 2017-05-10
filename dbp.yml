@@ -104,7 +104,7 @@ paths:
           description: Amount of the trades - how many values client wants to receive
           required: false
           type: integer
-          format: int64
+          format: int32
           
       # Expected responses for this operation:
       responses:
@@ -123,7 +123,7 @@ paths:
                 description: Number of actually returned trades. If limit parameter used
               total: 
                 type: number
-                format: int64
+                format: int32
                 description: Total number of trades (within the requested range) in the DB
               trades:
                 type: array
@@ -150,7 +150,7 @@ definitions:
         description: Trade price
       volume:
         type: integer
-        format: int64
+        format: int32
         description: Trade quantity
       currency:
         type: string
