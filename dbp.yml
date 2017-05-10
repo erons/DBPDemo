@@ -43,7 +43,7 @@ paths:
       parameters:
         - name: startsWith
           in: query
-          description: ISIN prefix - case insensiti
+          description: ISIN prefix - case insensitive
           required: false
           type: string
         - name: limit
@@ -88,7 +88,7 @@ paths:
           type: string
         - name: dateTimeFrom
           in: query
-          description: Time/Start time
+          description: Start time
           required: true
           type: string
           format: date-time
