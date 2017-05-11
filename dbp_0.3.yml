@@ -1,0 +1,155 @@
+swagger: '2.0'
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+# Metadata
+info:
+  version: "0.3.0"
+  title: DBP Demo API
+  description: A simple API for DBP demo application
+  
+schemes:
+  - https
+host: todo.com
+basePath: /v0.3
+
+################################################################################
+#                                  Security - TODO                             #
+################################################################################
+securityDefinitions:
+  oauth:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: TODO
+    scopes:
+      basic: TODO
+security:
+  - oauth:
+    - basic
+
+################################################################################
+#                                           Paths                              #
+################################################################################
+paths:
+  /isins:
+    get:
+      summary: A list of all available ISINs
+      description: |
+        Gets a list of ISINs. When no parameter is used, you get the list of all available ISINs in the DB. You can restrict the number of returned ISINs using `limit` parameter. Use `startsWith` parameter to define ISIN prefix (case insensitive).
+      produces:
+        - application/json
+      
+      parameters:
+        - name: startsWith
+          in: query
+          description: ISIN prefix - case insensitive
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: If defined, returns only this number of ISINs
+          required: false
+          type: integer
+          format: int32
+       
+      responses:
+        200:
+          description: A list of ISINs
+          schema:
+            title: Isins
+            type: object
+            properties:
+              returned: 
+                type: number
+                format: int32
+                description: Number of actually returned ISINs. If limit parameter used
+              total: 
+                type: number
+                format: int32
+                description: Total number of ISINs (that matches the prefix, if used) in the DB
+              isins:
+                type: array
+                items:
+                  type: string
+        
+                
+  /trades/{isin}:
+    get:
+      description: |
+        Returns trades from the interval `<dateTimeTo; dateTimeUntil>` for requested ISIN.
+        
+        `samples` parameter defines how many trades from the interval client wants to receive. Default value is `100`. The interval is sampled to return the exact number of trades. If too few trades are available, only available values are returned, not the requested number. The real count of returned entries will be send in the `returned` parameter. `total` parameter contains the total amount of all trades in the interval for requested ISIN (when no sampling would be used).
+      parameters:
+        - name: isin
+          in: path
+          description: ISIN
+          required: true
+          type: string
+        - name: dateTimeFrom
+          in: query
+          description: Start time
+          required: true
+          type: string
+          format: date-time
+        - name: dateTimeTo
+          in: query
+          description: End time
+          required: true
+          type: string
+          format: date-time
+        - name: samples
+          default: 100
+          in: query
+          description: Amount of the trades - how many values client wants to receive
+          required: false
+          type: integer
+          format: int32
+          
+      # Expected responses for this operation:
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: Trades
+            type: object
+            properties:
+              isin:
+                type: string
+                description: ISIN
+              currency:
+                type: string
+                description: Trade currency
+              returned: 
+                type: number
+                format: int32
+                description: Number of actually returned trades. If limit parameter used
+              trades:
+                type: array
+                items:
+                  $ref: '#/definitions/Trade'
+        404:
+          description: ISIN does not exist.
+          
+              
+################################################################################
+#                                 Definitions                                  #
+################################################################################        
+definitions:
+  Trade:
+    type: object
+    properties:
+      time:
+        type: string
+        format: date-time
+        description: Trade time
+      price:
+        type: number
+        format: double
+        description: Trade price
+      volume:
+        type: integer
+        format: int32
+        description: Trade quantity
+      
+        
