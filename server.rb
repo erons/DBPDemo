@@ -9,7 +9,7 @@ require 'date'
 #constants
 TRADES_DEFAULT = 100
 PORT = 3000
-VERSION = '/v0.2'
+VERSION = '/v0.3'
 
 #DB connection
 DB = Sequel.connect(adapter: :mysql2, database: 'dbp', host: 'localhost', user: 'dbpadmin', password: 'password')
