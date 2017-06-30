@@ -20,10 +20,10 @@ basePath: /v0.3
 securityDefinitions:
   oauth:
     type: oauth2
+    authorizationUrl: 'TODO'
     flow: implicit
-    authorizationUrl: TODO
     scopes:
-      basic: TODO
+      'basic': TODO
 security:
   - oauth:
     - basic
