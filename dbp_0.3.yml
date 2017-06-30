@@ -6,8 +6,8 @@ swagger: '2.0'
 # Metadata
 info:
   version: "0.3.0"
-  title: DBP Demo API
-  description: A simple API for DBP demo application
+  title: Hitorical trading prices
+  description: This API allows you to get access to historical trading prices from 2016. It is configurable so that it can returns trades from the interval `[dateTimeTo; dateTimeUntil]` for the requested ISIN.
   
 schemes:
   - http
@@ -21,9 +21,9 @@ securityDefinitions:
   oauth:
     type: oauth2
     flow: implicit
-    authorizationUrl: TODO
+    authorizationUrl: 'To be defined'
     scopes:
-      basic: TODO
+      basic: 'To be defined'
 security:
   - oauth:
     - basic
