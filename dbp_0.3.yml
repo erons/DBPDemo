@@ -10,8 +10,8 @@ info:
   description: A simple API for DBP demo application
   
 schemes:
-  - https
-host: http://35.158.151.60:3000
+  - http
+host: 35.158.151.60:3000
 basePath: /v0.3
 
 ################################################################################
