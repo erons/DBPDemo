@@ -21,9 +21,9 @@ securityDefinitions:
   oauth:
     type: oauth2
     flow: implicit
-    authorizationUrl: TO_BE_DEFINED
+    authorizationUrl: TODO
     scopes:
-      basic: TO_BE_DEFINED
+      basic: TODO
 security:
   - oauth:
     - basic
