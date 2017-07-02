@@ -6,7 +6,7 @@ swagger: '2.0'
 # Metadata
 info:
   version: "0.3.0"
-  title: Historical trading prices
+  title: Historical Trading Prices
   description: This API allows you to get access to historical trading prices from 2016. It is configurable so that it can returns trades from the interval `[dateTimeTo; dateTimeUntil]` for the requested ISIN.
   
 schemes:
